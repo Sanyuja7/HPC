@@ -1,0 +1,15 @@
+The code you provided is an implementation of the merge sort algorithm using OpenMP for parallelization. Merge sort is a divide-and-conquer algorithm that recursively divides the array into smaller subarrays, sorts them, and then merges them back together. The parallel version utilizes OpenMP sections to parallelize the sorting process.
+
+Here's a breakdown of the code:
+
+1. The `merge` function merges two sorted subarrays into one sorted array. It takes the array `arr`, indices for the low, mid, and high points of the subarrays, and performs the merging.
+
+2. The `parallelMergeSort` function is the parallel version of merge sort. It recursively divides the array into two halves and sorts them in parallel using OpenMP sections. After sorting the subarrays, it merges them using the `merge` function.
+
+3. The `mergeSort` function is the sequential version of merge sort. It follows the same recursive approach as `parallelMergeSort` but does not utilize parallelization.
+
+4. In the `main` function, an array `arr` is created with numbers ranging from `n` to 1. The array is then sorted twice: once using the sequential `mergeSort` function and once using the parallel `parallelMergeSort` function. The time taken for each sorting operation is measured using `omp_get_wtime()`.
+
+5. The time taken by the sequential and parallel algorithms is outputted to the console.
+
+Note: The code assumes that the OpenMP library is properly installed and configured. The `omp.h` header file is included, and the functions are annotated with OpenMP directives (`#pragma omp`) to enable parallelization.

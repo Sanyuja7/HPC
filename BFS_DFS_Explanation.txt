@@ -1,0 +1,29 @@
+The given code is an example of parallel breadth-first search (BFS) and depth-first search (DFS) algorithms for a binary tree. It uses OpenMP for parallelization.
+
+The `TreeNode` structure represents a node in the binary tree, with a value (`val`) and pointers to its left and right children. The `pBFS` function performs a parallel BFS traversal of the tree, while the `pDFS` function performs a parallel DFS traversal.
+
+In the `pBFS` function:
+- A queue (`q`) is initialized with the root node.
+- While the queue is not empty, the size of the queue (`qs`) is obtained.
+- The `#pragma omp parallel for` directive parallelizes the for loop, dividing the iterations among the available threads.
+- Each thread retrieves a node from the front of the queue (`q.front()`), prints its value, and removes it from the queue. If the node has left and/or right children, they are added to the queue.
+- The `#pragma omp critical` directive ensures that only one thread accesses the shared data (queue) at a time.
+
+In the `pDFS` function:
+- A stack (`s`) is initialized with the root node.
+- While the stack is not empty, the size of the stack (`ss`) is obtained.
+- The `#pragma omp parallel for` directive parallelizes the for loop.
+- Each thread retrieves a node from the top of the stack (`s.top()`), prints its value, and removes it from the stack. If the node has right and/or left children, they are added to the stack.
+- The `#pragma omp critical` directive ensures that only one thread accesses the shared data (stack) at a time.
+
+In the `main` function:
+- A binary tree is constructed, representing the following structure:
+```
+        1
+    2       3
+4     5   6    7
+```
+- The `pBFS` function is called to perform parallel BFS traversal on the tree.
+- The `pDFS` function is called to perform parallel DFS traversal on the tree.
+
+Please note that the code assumes the availability of the OpenMP library for parallel execution.

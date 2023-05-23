@@ -1,0 +1,23 @@
+The code you provided demonstrates the use of OpenMP (Open Multi-Processing) to parallelize the computation of minimum, maximum, sum, and average values of an integer array.
+
+Here's a breakdown of the code:
+
+1. The `#include` directive is used to include the necessary header files: `<iostream>` for input/output operations and `<omp.h>` for OpenMP functions and directives.
+
+2. The `using namespace std;` statement allows you to use standard library functions and objects without explicitly specifying the namespace.
+
+3. The `minval` function takes an integer array `arr` and its size `n` as parameters and returns the minimum value in the array. It uses OpenMP's `parallel for` directive with the `reduction` clause to perform a parallel loop reduction operation on the `minval` variable. The `min` reduction specifies that the minimum value should be computed.
+
+4. The `maxval` function is similar to `minval`, but it finds the maximum value in the array using the `max` reduction.
+
+5. The `sum` function computes the sum of all elements in the array. It also uses the `reduction` clause with the `+` reduction operator to perform a parallel reduction on the `sum` variable.
+
+6. The `average` function calculates the average of the array elements by dividing the sum obtained from the `sum` function by the size `n`.
+
+7. In the `main` function, an integer array `arr` is initialized with values {1, 2, 3, 4, 5}, and the variable `n` is set to 5, representing the size of the array.
+
+8. The `minval`, `maxval`, `sum`, and `average` functions are called with the `arr` and `n` parameters, and the results are printed using `cout`.
+
+9. Finally, the program returns 0 to indicate successful execution.
+
+This code utilizes OpenMP to parallelize the computation of minimum, maximum, sum, and average values, allowing for potentially faster execution on systems that support multi-threading.

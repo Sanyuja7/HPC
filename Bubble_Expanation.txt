@@ -1,0 +1,7 @@
+The code you provided is an implementation of the bubble sort algorithm using OpenMP for parallelization. The `bubble` function implements the sequential version of the bubble sort, while the `pBubble` function implements the parallel version using OpenMP directives.
+
+In the `pBubble` function, the array is divided into two sections: odd-indexed numbers and even-indexed numbers. The odd-indexed numbers are sorted in parallel using the `#pragma omp for` directive, and then a barrier is used to synchronize the threads. After synchronization, the even-indexed numbers are sorted in parallel using another `#pragma omp for` directive.
+
+The `printArray` function is used to print the elements of an array, and the `main` function demonstrates the usage of the sequential and parallel bubble sort implementations. It creates an array with numbers from `n` to 1, performs bubble sort sequentially, measures the execution time, prints the sorted array, resets the array, performs parallel bubble sort, measures the execution time, and prints the sorted array.
+
+Overall, this code demonstrates how to parallelize the bubble sort algorithm using OpenMP to potentially improve performance by utilizing multiple threads.
